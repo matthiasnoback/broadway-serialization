@@ -1,4 +1,17 @@
 {
+    "name": "matthiasnoback/broadway-serialization",
+    "type": "library",
+    "description": "Serialization helpers for Broadway",
+    "keywords": ["Broadway", "serialization"],
+    "homepage": "http://github.com/matthiasnoback/broadway-serialization",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthias Noback",
+            "email": "matthiasnoback@gmail.com",
+            "homepage": "http://php-and-symfony.matthiasnoback.nl"
+        }
+    ],
     "require": {
         "php": ">=5.4",
         "doctrine/instantiator": "^1.0",
