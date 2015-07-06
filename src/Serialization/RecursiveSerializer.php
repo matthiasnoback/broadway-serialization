@@ -51,7 +51,8 @@ final class RecursiveSerializer
             if (isset($callbacks[$property])) {
                 if (is_array($value) && ArrayHelper::isNumericallyIndexed($value)) {
                     $value = array_map($callbacks[$property], $value);
-                } else {
+                } elseif ($value !== null) {
+                    // if $value is null, we don't call the callable, since its type-hint may then cause a fatal error
                     $value = $callbacks[$property]($value);
                 }
             }

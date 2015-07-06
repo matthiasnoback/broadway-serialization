@@ -91,4 +91,21 @@ class RecursiveSerializerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($serializedData, RecursiveSerializer::deserialize($serializedData));
     }
+
+    /**
+     * @test
+     */
+    public function when_deserializing_do_not_call_the_callable_when_the_value_is_null()
+    {
+        $serializedData = [
+            'foo' => null
+        ];
+        $callables = [
+            'foo' => function(array $data) {
+                // when passing null, this would cause a fatal error
+            }
+        ];
+
+        $this->assertSame($serializedData, RecursiveSerializer::deserialize($serializedData, $callables));
+    }
 }
