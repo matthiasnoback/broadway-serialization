@@ -1,8 +1,8 @@
 <?php
 
-namespace BroadwaySerialization\Test;
+namespace BroadwaySerialization\Test\Serialization;
 
-use BroadwaySerialization\ArrayHelper;
+use BroadwaySerialization\Serialization\ArrayHelper;
 
 class ArrayHelperTest extends \PHPUnit_Framework_TestCase
 {

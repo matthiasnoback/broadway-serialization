@@ -1,6 +1,6 @@
 <?php
 
-namespace BroadwaySerialization\Test;
+namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
 use Broadway\Serializer\SerializableInterface;
 

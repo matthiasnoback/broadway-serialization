@@ -1,13 +1,12 @@
 <?php
 
-namespace BroadwaySerialization\Test;
+namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
 use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serializable;
 
 class SerializableObjectUsingTrait implements SerializableInterface
 {
-    use Serializable;
+    use \BroadwaySerialization\Serialization\Serializable;
 
     private $foo;
     private $bar;
@@ -23,8 +22,8 @@ class SerializableObjectUsingTrait implements SerializableInterface
     protected static function deserializationCallbacks()
     {
         return [
-            'bar' => ['\BroadwaySerialization\Test\TraditionalSerializableObject', 'deserialize'],
-            'bars' => ['\BroadwaySerialization\Test\TraditionalSerializableObject', 'deserialize']
+            'bar' => ['BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject', 'deserialize'],
+            'bars' => ['BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject', 'deserialize']
         ];
     }
 }

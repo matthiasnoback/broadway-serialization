@@ -1,6 +1,6 @@
 <?php
 
-namespace BroadwaySerialization;
+namespace BroadwaySerialization\Serialization;
 
 use Broadway\Serializer\SerializableInterface;
 
@@ -20,6 +20,7 @@ final class RecursiveSerializer
     public static function serialize(array $values)
     {
         $serializedData = [];
+
         foreach ($values as $property => $value) {
             if (is_array($value)) {
                 $value = self::serialize($value);

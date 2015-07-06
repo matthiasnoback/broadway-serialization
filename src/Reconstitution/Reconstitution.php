@@ -1,6 +1,6 @@
 <?php
 
-namespace BroadwaySerialization;
+namespace BroadwaySerialization\Reconstitution;
 
 /**
  * This class keeps an application-wide instance for reconstituting objects.

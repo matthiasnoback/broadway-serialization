@@ -1,9 +1,9 @@
 <?php
 
-namespace BroadwaySerialization\Test;
+namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
 use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serializable;
+use BroadwaySerialization\Serialization\Serializable;
 
 class SerializableObjectWithNoCallbacks implements SerializableInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace BroadwaySerialization;
+namespace BroadwaySerialization\Reconstitution;
 
 interface Reconstitute
 {

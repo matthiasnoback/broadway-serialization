@@ -22,3 +22,5 @@ after_script:
 
 notifications:
   email: matthiasnoback@gmail.com
+
+sudo: false

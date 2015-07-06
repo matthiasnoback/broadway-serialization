@@ -1,8 +1,8 @@
 <?php
 
-namespace BroadwaySerialization\Test;
+namespace BroadwaySerialization\Test\Reconstitution;
 
-use BroadwaySerialization\Reconstitution;
+use BroadwaySerialization\Reconstitution\Reconstitution;
 
 class ReconstitutionTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,6 +29,6 @@ class ReconstitutionTest extends \PHPUnit_Framework_TestCase
 
     private function dummyReconstitute()
     {
-        return $this->getMock('\BroadwaySerialization\Reconstitute');
+        return $this->getMock('BroadwaySerialization\Reconstitution\Reconstitute');
     }
 }

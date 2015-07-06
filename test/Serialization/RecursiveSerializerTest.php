@@ -1,8 +1,9 @@
 <?php
 
-namespace BroadwaySerialization\Test;
+namespace BroadwaySerialization\Test\Serialization;
 
-use BroadwaySerialization\RecursiveSerializer;
+use BroadwaySerialization\Serialization\RecursiveSerializer;
+use BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject;
 
 class RecursiveSerializerTest extends \PHPUnit_Framework_TestCase
 {
@@ -65,5 +66,29 @@ class RecursiveSerializerTest extends \PHPUnit_Framework_TestCase
                 }
             ])
         );
+    }
+
+    /**
+     * @test
+     */
+    public function when_serializing_it_leaves_an_array_of_scalar_values_as_it_is()
+    {
+        $serializedData = [
+            'foo' => ['bar', 'baz']
+        ];
+
+        $this->assertSame($serializedData, RecursiveSerializer::serialize($serializedData));
+    }
+
+    /**
+     * @test
+     */
+    public function when_deserializing_it_leaves_an_array_of_scalar_values_as_it_is()
+    {
+        $serializedData = [
+            'foo' => ['bar', 'baz']
+        ];
+
+        $this->assertSame($serializedData, RecursiveSerializer::deserialize($serializedData));
     }
 }

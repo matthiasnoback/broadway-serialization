@@ -1,9 +1,13 @@
 <?php
 
-namespace BroadwaySerialization\Test;
+namespace BroadwaySerialization\Test\Serialization;
 
-use BroadwaySerialization\OcramiusReconstitute;
-use BroadwaySerialization\Reconstitution;
+use BroadwaySerialization\Hydration\HydrateUsingReflection;
+use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use BroadwaySerialization\Reconstitution\Reconstitution;
+use BroadwaySerialization\Test\Serialization\Fixtures\SerializableObjectUsingTrait;
+use BroadwaySerialization\Test\Serialization\Fixtures\SerializableObjectWithNoCallbacks;
+use BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject;
 use Doctrine\Instantiator\Instantiator;
 
 class SerializableTest extends \PHPUnit_Framework_TestCase
@@ -11,7 +15,7 @@ class SerializableTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         Reconstitution::reconstituteUsing(
-            new OcramiusReconstitute(new Instantiator(), null)
+            new ReconstituteUsingInstantiatorAndHydrator(new Instantiator(), new HydrateUsingReflection())
         );
     }
 

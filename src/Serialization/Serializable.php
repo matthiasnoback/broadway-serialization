@@ -1,6 +1,8 @@
 <?php
 
-namespace BroadwaySerialization;
+namespace BroadwaySerialization\Serialization;
+
+use BroadwaySerialization\Reconstitution\Reconstitution;
 
 /**
  * Use this trait in classes that implement \Broadway\Serializer\SerializableInterface to make them automatically fully
@@ -17,9 +19,10 @@ trait Serializable
      */
     final public static function deserialize(array $data)
     {
-        $deserializedData = RecursiveSerializer::deserialize($data, self::deserializationCallbacks());
-
-        return Reconstitution::reconstitute()->objectFrom(get_called_class(), $deserializedData);
+        return Reconstitution::reconstitute()->objectFrom(
+            get_called_class(),
+            RecursiveSerializer::deserialize($data, self::deserializationCallbacks())
+        );
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace BroadwaySerialization;
+namespace BroadwaySerialization\Serialization;
 
 final class ArrayHelper
 {
