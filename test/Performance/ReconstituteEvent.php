@@ -4,13 +4,32 @@ namespace BroadwaySerialization\Test\Performance;
 
 use Athletic\AthleticEvent;
 use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Hydration\HydrateUsingGeneratedHydrator;
 use BroadwaySerialization\Hydration\HydrateUsingReflection;
+use BroadwaySerialization\Reconstitution\Reconstitute;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use Doctrine\Instantiator\Instantiator;
 
 class ReconstituteEvent extends AthleticEvent
 {
+    private $deserializeData = [
+        'stringProperty' => 'foo',
+        'integerProperty' => 20,
+        'nullProperty' => null,
+        'arrayProperty' => ['foo' => 'bar', 'bar' => 'baz'],
+        'objectProperty' => [
+            'foo' => 'foo',
+        ],
+        'objectsProperty' => [
+            [
+                'foo' => 'bar',
+            ],
+            [
+                'foo' => 'baz',
+            ],
+        ]
+    ];
     /**
      * @var SerializableInterface
      */
@@ -21,22 +40,41 @@ class ReconstituteEvent extends AthleticEvent
      */
     private $serializableClassUsingTrait;
 
+    /**
+     * @var Reconstitute
+     */
+    private $reconstituteUsingReflection;
+
+    /**
+     * @var Reconstitute
+     */
+    private $reconstituteUsingGeneratedHydrator;
+
     protected function setUp()
     {
         $this->traditionalSerializableClass = new TraditionalSerializableClass();
         $this->serializableClassUsingTrait = new SerializableClassUsingTrait();
 
-        $reconstitute = new ReconstituteUsingInstantiatorAndHydrator(new Instantiator(), new HydrateUsingReflection());
-        // test run, to trigger class generation:
-        $reconstitute->objectFrom('BroadwaySerialization\Test\Performance\SerializableClassUsingTrait', []);
+        $instantiator = new Instantiator();
+        $this->reconstituteUsingReflection = new ReconstituteUsingInstantiatorAndHydrator(
+            $instantiator,
+            new HydrateUsingReflection()
+        );
+        $this->reconstituteUsingGeneratedHydrator = new ReconstituteUsingInstantiatorAndHydrator(
+            new Instantiator(),
+            new HydrateUsingGeneratedHydrator(null)
+        );
 
-        Reconstitution::reconstituteUsing($reconstitute);
+        // test run, to trigger class generation:
+        $this->reconstituteUsingGeneratedHydrator->objectFrom('BroadwaySerialization\Test\Performance\SerializableClassUsingTrait', []);
+
+        $this->reconstituteUsingGeneratedHydrator->objectFrom('BroadwaySerialization\Test\Performance\SomeOtherSerializableClassUsingTrait', []);
     }
 
     /**
      * @iterations 1000
      */
-    public function serializeObjectWithOnlyScalarProperties()
+    public function traditional_serialize()
     {
         $data = $this->traditionalSerializableClass->serialize();
     }
@@ -44,56 +82,58 @@ class ReconstituteEvent extends AthleticEvent
     /**
      * @iterations 1000
      */
-    public function deserializeTraditionalObject()
+    public function traditional_deserialize()
     {
-        $object = TraditionalSerializableClass::deserialize([
-            'stringProperty' => 'foo',
-            'integerProperty' => 20,
-            'nullProperty' => null,
-            'arrayProperty' => ['foo' => 'bar', 'bar' => 'baz'],
-            'objectProperty' => [
-                'foo' => 'foo',
-            ],
-            'objectsProperty' => [
-                [
-                    'foo' => 'bar',
-                ],
-                [
-                    'foo' => 'baz',
-                ],
-            ]
-        ]);
+        $object = TraditionalSerializableClass::deserialize($this->deserializeData);
     }
 
     /**
      * @iterations 1000
      */
-    public function serializeObjectWithOnlyScalarPropertiesWithTrait()
+    public function reflection_serialize()
     {
+        $this->useReflection();
+
         $data = $this->serializableClassUsingTrait->serialize();
     }
 
     /**
      * @iterations 1000
      */
-    public function deserializeObjectUsingTrait()
+    public function reflection_deserialize()
     {
-        $object = SerializableClassUsingTrait::deserialize([
-            'stringProperty' => 'foo',
-            'integerProperty' => 20,
-            'nullProperty' => null,
-            'arrayProperty' => ['foo' => 'bar', 'bar' => 'baz'],
-            'objectProperty' => [
-                'foo' => 'foo',
-            ],
-            'objectsProperty' => [
-                [
-                    'foo' => 'bar',
-                ],
-                [
-                    'foo' => 'baz',
-                ],
-            ]
-        ]);
+        $this->useReflection();
+
+        $object = SerializableClassUsingTrait::deserialize($this->deserializeData);
+    }
+
+    /**
+     * @iterations 1000
+     */
+    public function generated_hydrator_serialize()
+    {
+        $this->useGeneratedHydrator();
+
+        $data = $this->serializableClassUsingTrait->serialize();
+    }
+
+    /**
+     * @iterations 1000
+     */
+    public function generated_hydrator_deserialize()
+    {
+        $this->useGeneratedHydrator();
+
+        $object = SerializableClassUsingTrait::deserialize($this->deserializeData);
+    }
+
+    private function useGeneratedHydrator()
+    {
+        Reconstitution::reconstituteUsing($this->reconstituteUsingGeneratedHydrator);
+    }
+
+    private function useReflection()
+    {
+        Reconstitution::reconstituteUsing($this->reconstituteUsingReflection);
     }
 }
