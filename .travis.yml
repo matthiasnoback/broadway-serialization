@@ -16,6 +16,7 @@ before_script:
 
 script:
   - vendor/bin/phpunit
+  - php -n vendor/bin/athletic -p test/Performance
 
 after_script:
   - vendor/bin/coveralls
