@@ -3,7 +3,6 @@
 namespace BroadwaySerialization\Test\Performance;
 
 use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
 
 class SomeOtherSerializableClassUsingTrait implements SerializableInterface
 {

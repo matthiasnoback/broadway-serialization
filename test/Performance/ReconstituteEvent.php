@@ -21,14 +21,34 @@ class ReconstituteEvent extends AthleticEvent
      */
     private $serializableClassUsingTrait;
 
-    protected function setUp()
+    private $deserializationData = [
+        'stringProperty' => 'foo',
+        'integerProperty' => 20,
+        'nullProperty' => null,
+        'arrayProperty' => ['foo' => 'bar', 'bar' => 'baz'],
+        'objectProperty' => [
+            'foo' => 'foo',
+        ],
+        'objectsProperty' => [
+            [
+                'foo' => 'bar',
+            ],
+            [
+                'foo' => 'baz',
+            ],
+        ]
+    ];
+
+    protected function classSetUp()
     {
         $this->traditionalSerializableClass = new TraditionalSerializableClass();
         $this->serializableClassUsingTrait = new SerializableClassUsingTrait();
 
         $reconstitute = new ReconstituteUsingInstantiatorAndHydrator(new Instantiator(), new HydrateUsingReflection());
-        // test run, to trigger class generation:
+
+        // test run, for calibration
         $reconstitute->objectFrom('BroadwaySerialization\Test\Performance\SerializableClassUsingTrait', []);
+        $reconstitute->objectFrom('\BroadwaySerialization\Test\Performance\SomeOtherSerializableClassUsingTrait', []);
 
         Reconstitution::reconstituteUsing($reconstitute);
     }
@@ -38,7 +58,7 @@ class ReconstituteEvent extends AthleticEvent
      */
     public function serializeObjectWithOnlyScalarProperties()
     {
-        $data = $this->traditionalSerializableClass->serialize();
+        $this->traditionalSerializableClass->serialize();
     }
 
     /**
@@ -46,23 +66,7 @@ class ReconstituteEvent extends AthleticEvent
      */
     public function deserializeTraditionalObject()
     {
-        $object = TraditionalSerializableClass::deserialize([
-            'stringProperty' => 'foo',
-            'integerProperty' => 20,
-            'nullProperty' => null,
-            'arrayProperty' => ['foo' => 'bar', 'bar' => 'baz'],
-            'objectProperty' => [
-                'foo' => 'foo',
-            ],
-            'objectsProperty' => [
-                [
-                    'foo' => 'bar',
-                ],
-                [
-                    'foo' => 'baz',
-                ],
-            ]
-        ]);
+        TraditionalSerializableClass::deserialize($this->deserializationData);
     }
 
     /**
@@ -70,7 +74,7 @@ class ReconstituteEvent extends AthleticEvent
      */
     public function serializeObjectWithOnlyScalarPropertiesWithTrait()
     {
-        $data = $this->serializableClassUsingTrait->serialize();
+        $this->serializableClassUsingTrait->serialize();
     }
 
     /**
@@ -78,22 +82,6 @@ class ReconstituteEvent extends AthleticEvent
      */
     public function deserializeObjectUsingTrait()
     {
-        $object = SerializableClassUsingTrait::deserialize([
-            'stringProperty' => 'foo',
-            'integerProperty' => 20,
-            'nullProperty' => null,
-            'arrayProperty' => ['foo' => 'bar', 'bar' => 'baz'],
-            'objectProperty' => [
-                'foo' => 'foo',
-            ],
-            'objectsProperty' => [
-                [
-                    'foo' => 'bar',
-                ],
-                [
-                    'foo' => 'baz',
-                ],
-            ]
-        ]);
+        SerializableClassUsingTrait::deserialize($this->deserializationData);
     }
 }
