@@ -7,15 +7,38 @@ namespace BroadwaySerialization\Hydration;
  */
 class HydrateUsingReflection implements Hydrate
 {
+    /**
+     * @var array An array of arrays of \ReflectionProperty instances
+     */
+    private $properties = [];
+
     public function hydrate(array $data, $object)
     {
-        foreach ((new \ReflectionObject($object))->getProperties() as $property) {
+        foreach ($this->propertiesOf($object) as $property) {
             if (!isset($data[$property->getName()])) {
                 continue;
             }
 
-            $property->setAccessible(true);
             $property->setValue($object, $data[$property->getName()]);
         }
+    }
+
+    /**
+     * @param object $object
+     * @return \ReflectionProperty[]
+     */
+    private function propertiesOf($object)
+    {
+        $className = get_class($object);
+
+        if (!isset($this->properties[$className])) {
+            $this->properties[$className] = (new \ReflectionObject($object))->getProperties();
+            foreach ($this->properties[$className] as $property) {
+                /** @var \ReflectionProperty $property */
+                $property->setAccessible(true);
+            }
+        }
+
+        return $this->properties[$className];
     }
 }
