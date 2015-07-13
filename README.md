@@ -70,3 +70,32 @@ class SerializableObject implements SerializableInterface
 By implementing `deserializationCallbacks()` you can define callables that 
 should be called in order to deserialize the provided data. The callable will 
 be called once for single values or multiple times for arrays of values.
+
+## Setup
+
+The `Serializable` trait depends on a little bit of setup. Before calling its `deserialize()` method, make sure you 
+have properly set up a `Reconstitute` service, like this:
+ 
+```php
+use BroadwaySerialization\Reconstitution\Reconstitution;
+use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use Doctrine\Instantiator\Instantiator;
+us BroadwaySerialization\Hydration\HydrateUsingReflection;
+
+Reconstitution::reconstituteUsing(
+    new ReconstituteUsingInstantiatorAndHydrator(
+        new Instantiator(),
+        new HydrateUsingReflection()
+    )
+);
+```
+
+### Symfony
+
+If you're using Symfony, this can be managed for you automatically. Just register the 
+`BroadwaySerialization\SymfonyIntegration\BroadwaySerializationBundle` in your application kernel.
+
+## Performance
+
+When using this library, your personal performance will increase significantly. Of course, runtime performance will 
+be worse (not noticeably though, unless you're actually deserializing millions of objects).

@@ -15,8 +15,7 @@
     "require": {
         "php": ">=5.4",
         "doctrine/instantiator": "~1.0",
-        "broadway/broadway": "~0.4",
-        "beberlei/assert": "~2.0"
+        "broadway/broadway": "~0.4"
     },
     "autoload": {
         "psr-4": {
@@ -31,6 +30,7 @@
     "require-dev": {
         "phpunit/phpunit": "^4.7",
         "satooshi/php-coveralls": "^0.6.1",
-        "athletic/athletic": "^0.1.8"
+        "athletic/athletic": "^0.1.8",
+        "symfony/framework-bundle": "~2.7"
     }
 }

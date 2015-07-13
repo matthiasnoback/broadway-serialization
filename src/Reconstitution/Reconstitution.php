@@ -29,12 +29,13 @@ final class Reconstitution
 
     /**
      * Provide an object which can reconstitute objects, call this when the application is booting.
+     * Provide `null` to free the object reference.
      *
-     * @param Reconstitute $reconstitute
+     * @param Reconstitute|null $reconstitute
      * @return void
      * @private
      */
-    public static function reconstituteUsing(Reconstitute $reconstitute)
+    public static function reconstituteUsing(Reconstitute $reconstitute = null)
     {
         self::$reconstitute = $reconstitute;
     }

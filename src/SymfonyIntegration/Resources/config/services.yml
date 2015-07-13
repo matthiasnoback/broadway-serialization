@@ -1,0 +1,14 @@
+services:
+    broadway_serialization.instantiator:
+        class: Doctrine\Instantiator\Instantiator
+        public: false
+
+    broadway_serialization.hydrate:
+        class: BroadwaySerialization\Hydration\HydrateUsingReflection
+        public: false
+
+    broadway_serialization.reconstitute:
+        class: BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator
+        arguments:
+            - @broadway_serialization.instantiator
+            - @broadway_serialization.hydrate
