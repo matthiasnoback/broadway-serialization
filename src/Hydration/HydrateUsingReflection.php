@@ -12,6 +12,9 @@ class HydrateUsingReflection implements Hydrate
      */
     private $properties = [];
 
+    /**
+     * @inheritdoc
+     */
     public function hydrate(array $data, $object)
     {
         foreach ($this->propertiesOf($object) as $property) {

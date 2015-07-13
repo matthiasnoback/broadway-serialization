@@ -2,6 +2,10 @@
 
 namespace BroadwaySerialization\Hydration;
 
+/**
+ * Used by {@see \BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator} to copy data into a
+ * previously instantiated object.
+ */
 interface Hydrate
 {
     /**

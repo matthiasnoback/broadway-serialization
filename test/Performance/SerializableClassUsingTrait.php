@@ -7,7 +7,7 @@ use BroadwaySerialization\Serialization\Serializable;
 
 class SerializableClassUsingTrait implements SerializableInterface
 {
-    use \BroadwaySerialization\Serialization\Serializable;
+    use Serializable;
 
     private $stringProperty = 'foo';
     private $integerProperty = 20;

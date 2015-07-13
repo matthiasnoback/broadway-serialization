@@ -3,10 +3,11 @@
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
 use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
 
 class SerializableObjectUsingTrait implements SerializableInterface
 {
-    use \BroadwaySerialization\Serialization\Serializable;
+    use Serializable;
 
     private $foo;
     private $bar;

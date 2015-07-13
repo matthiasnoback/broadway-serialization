@@ -3,11 +3,10 @@
 namespace BroadwaySerialization\Reconstitution;
 
 use BroadwaySerialization\Hydration\Hydrate;
-use BroadwaySerialization\Reconstitution\Reconstitute;
 use Doctrine\Instantiator\InstantiatorInterface;
 
 /**
- * Uses doctrine/instantiator and ocramius/generated-hydrator to reconstitute objects
+ * Uses doctrine/instantiator and a Hydrate instance to reconstitute objects
  */
 class ReconstituteUsingInstantiatorAndHydrator implements Reconstitute
 {
@@ -23,7 +22,7 @@ class ReconstituteUsingInstantiatorAndHydrator implements Reconstitute
 
     /**
      * @param InstantiatorInterface $instantiator
-     * @param string|null $cacheDirectory Where to store the generated hydrator classes
+     * @param Hydrate $hydrator
      */
     public function __construct(InstantiatorInterface $instantiator, Hydrate $hydrator)
     {
