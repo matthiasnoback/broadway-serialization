@@ -80,7 +80,7 @@ have properly set up a `Reconstitute` service, like this:
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
 use Doctrine\Instantiator\Instantiator;
-us BroadwaySerialization\Hydration\HydrateUsingReflection;
+use BroadwaySerialization\Hydration\HydrateUsingReflection;
 
 Reconstitution::reconstituteUsing(
     new ReconstituteUsingInstantiatorAndHydrator(
