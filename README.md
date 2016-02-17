@@ -36,7 +36,7 @@ serializable objects.
 ```php
 
 use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serializable;
+use BroadwaySerialization\Serialization\Serializable;
 
 class SerializableObject implements SerializableInterface
 {
