@@ -10,5 +10,5 @@ services:
     broadway_serialization.reconstitute:
         class: BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator
         arguments:
-            - @broadway_serialization.instantiator
-            - @broadway_serialization.hydrate
+            - "@broadway_serialization.instantiator"
+            - "@broadway_serialization.hydrate"
