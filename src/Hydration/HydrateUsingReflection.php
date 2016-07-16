@@ -17,15 +17,15 @@ class HydrateUsingReflection implements Hydrate
      */
     public function hydrate(array $data, $object)
     {
-        foreach ($this->propertiesOf($object) as $property) {
-            if (!isset($data[$property->getName()])) {
+        foreach ($this->propertiesOf($object) as $name => $property) {
+            if (!isset($data[$name])) {
                 continue;
             }
 
-            $property->setValue($object, $data[$property->getName()]);
+            $property->setValue($object, $data[$name]);
         }
     }
-
+    
     /**
      * @param object $object
      * @return \ReflectionProperty[]
@@ -35,10 +35,10 @@ class HydrateUsingReflection implements Hydrate
         $className = get_class($object);
 
         if (!isset($this->properties[$className])) {
-            $this->properties[$className] = (new \ReflectionObject($object))->getProperties();
-            foreach ($this->properties[$className] as $property) {
+            foreach ((new \ReflectionObject($object))->getProperties() as $property) {
                 /** @var \ReflectionProperty $property */
                 $property->setAccessible(true);
+                $this->properties[$className][$property->getName()] = $property;
             }
         }
 
