@@ -29,11 +29,11 @@ class SerializableClassUsingTrait implements SerializableInterface
     {
         return [
             'objectProperty' => [
-                'BroadwaySerialization\Test\Performance\SomeOtherSerializableClassUsingTrait',
+                SomeOtherSerializableClassUsingTrait::class,
                 'deserialize'
             ],
             'objectsProperty' => [
-                'BroadwaySerialization\Test\Performance\SomeOtherSerializableClassUsingTrait',
+                SomeOtherSerializableClassUsingTrait::class,
                 'deserialize'
             ],
         ];
