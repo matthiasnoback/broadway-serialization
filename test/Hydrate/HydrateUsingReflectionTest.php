@@ -3,6 +3,7 @@
 namespace BroadwaySerialization\Test\Hydrate;
 
 use BroadwaySerialization\Hydration\HydrateUsingReflection;
+use BroadwaySerialization\Test\Hydrate\Fixtures\ClassWithoutProperties;
 use BroadwaySerialization\Test\Hydrate\Fixtures\ClassWithPrivateProperties;
 
 class HydrateUsingReflectionTest extends \PHPUnit_Framework_TestCase
@@ -48,5 +49,18 @@ class HydrateUsingReflectionTest extends \PHPUnit_Framework_TestCase
         $hydrate->hydrate(['extra' => 'no problem', 'foo' => 'bar'], $object);
 
         $this->assertSame('bar', $object->foo());
+    }
+
+    /**
+     * @test
+     */
+    public function it_works_for_objects_without_properties()
+    {
+        $object = new ClassWithoutProperties();
+
+        $hydrate = new HydrateUsingReflection();
+
+        // This class doesn't have any property which should be no problem
+        $hydrate->hydrate([], $object);
     }
 }

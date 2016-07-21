@@ -35,6 +35,7 @@ class HydrateUsingReflection implements Hydrate
         $className = get_class($object);
 
         if (!isset($this->properties[$className])) {
+            $this->properties[$className] = [];
             foreach ((new \ReflectionObject($object))->getProperties() as $property) {
                 /** @var \ReflectionProperty $property */
                 $property->setAccessible(true);
