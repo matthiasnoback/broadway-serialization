@@ -16,3 +16,7 @@ after_script:
   - vendor/bin/coveralls
 
 sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
