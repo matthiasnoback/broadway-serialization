@@ -2,7 +2,7 @@
 
 namespace BroadwaySerialization\Serialization;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable;
 
 /**
  * Helper class for recursively preparing (property) values for (de)serialization.
@@ -26,7 +26,7 @@ final class RecursiveSerializer
                 $value = self::serialize($value);
             }
 
-            if ($value instanceof SerializableInterface) {
+            if ($value instanceof Serializable) {
                 $value = $value->serialize();
             }
 

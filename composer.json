@@ -15,7 +15,7 @@
     "require": {
         "php": ">=5.5.9",
         "doctrine/instantiator": "~1.0",
-        "broadway/broadway": "~0.4"
+        "broadway/broadway": "~1.0.0"
     },
     "autoload": {
         "psr-4": {

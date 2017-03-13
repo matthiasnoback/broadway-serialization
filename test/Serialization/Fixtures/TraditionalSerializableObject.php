@@ -2,9 +2,10 @@
 
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
+use Broadway\Serializer\Serializable;
 use Broadway\Serializer\SerializableInterface;
 
-class TraditionalSerializableObject implements SerializableInterface
+class TraditionalSerializableObject implements Serializable
 {
     private $bar;
 

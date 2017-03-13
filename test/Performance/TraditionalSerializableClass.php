@@ -2,9 +2,10 @@
 
 namespace BroadwaySerialization\Test\Performance;
 
+use Broadway\Serializer\Serializable;
 use Broadway\Serializer\SerializableInterface;
 
-class TraditionalSerializableClass implements SerializableInterface
+class TraditionalSerializableClass implements Serializable
 {
     private $stringProperty = 'foo';
     private $integerProperty = 20;

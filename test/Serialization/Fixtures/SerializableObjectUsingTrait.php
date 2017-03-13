@@ -2,7 +2,7 @@
 
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
 class SerializableObjectUsingTrait implements SerializableInterface
