@@ -2,12 +2,12 @@
 
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
-use Broadway\Serializer\Serializable as SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable;
+use BroadwaySerialization\Serialization\AutoSerializable;
 
-class SerializableObjectWithNoCallbacks implements SerializableInterface
+class SerializableObjectWithNoCallbacks implements Serializable
 {
-    use Serializable;
+    use AutoSerializable;
 
     private $bar;
 

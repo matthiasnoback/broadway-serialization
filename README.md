@@ -27,7 +27,7 @@ yet assumptions:
 
 1. Serializable objects have at least one property. Properties can have any 
 kind of scope.
-2. Serializable objects implements Broadway's `SerializableInterface`.
+2. Serializable objects implements Broadway's `Serializable` interface.
 3. Properties contain scalar values, serializable objects, or arrays of 
 serializable objects.
 
@@ -35,12 +35,12 @@ serializable objects.
 
 ```php
 
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable;
+use BroadwaySerialization\Serialization\AutoSerializable;
 
 class SerializableObject implements SerializableInterface
 {
-    use Serializable;
+    use AutoSerializable;
 
     /**
      * @var string

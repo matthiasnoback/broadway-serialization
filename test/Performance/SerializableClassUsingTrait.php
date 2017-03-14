@@ -3,11 +3,11 @@
 namespace BroadwaySerialization\Test\Performance;
 
 use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use BroadwaySerialization\Serialization\AutoSerializable;
 
 class SerializableClassUsingTrait implements SerializableInterface
 {
-    use Serializable;
+    use AutoSerializable;
 
     private $stringProperty = 'foo';
     private $integerProperty = 20;

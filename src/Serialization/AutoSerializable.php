@@ -5,11 +5,11 @@ namespace BroadwaySerialization\Serialization;
 use BroadwaySerialization\Reconstitution\Reconstitution;
 
 /**
- * Use this trait in classes that implement \Broadway\Serializer\SerializableInterface to make them automatically fully
+ * Use this trait in classes that implement \Broadway\Serializer\Serializable to make them automatically fully
  * serializable. If properties need to be deserialized to objects, you need to override the `deserializationCallbacks()`
  * method as well. See \BroadwaySerialization\Serializable::deserializationCallbacks().
  */
-trait Serializable
+trait AutoSerializable
 {
     /**
      * @see \Broadway\Serializer\SerializableInterface::deserialize()
