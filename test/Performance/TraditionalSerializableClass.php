@@ -41,7 +41,7 @@ class TraditionalSerializableClass implements Serializable
         return $object;
     }
 
-    public function serialize(): array
+    public function serialize()
     {
         return [
             'stringProperty' => $this->stringProperty,

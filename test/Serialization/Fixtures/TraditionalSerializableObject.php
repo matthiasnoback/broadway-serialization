@@ -23,7 +23,7 @@ class TraditionalSerializableObject implements Serializable
         return new self($data['bar']);
     }
 
-    public function serialize(): array
+    public function serialize()
     {
         return ['bar' => $this->bar];
     }

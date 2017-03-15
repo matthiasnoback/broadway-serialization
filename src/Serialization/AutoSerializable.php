@@ -30,7 +30,7 @@ trait AutoSerializable
      *
      * @return array Values of properties that should be serialized
      */
-    final public function serialize(): array
+    final public function serialize()
     {
         return RecursiveSerializer::serialize(get_object_vars($this));
     }
