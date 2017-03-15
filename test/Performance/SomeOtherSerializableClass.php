@@ -2,9 +2,9 @@
 
 namespace BroadwaySerialization\Test\Performance;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable;
 
-class SomeOtherSerializableClass implements SerializableInterface
+class SomeOtherSerializableClass implements Serializable
 {
     private $foo;
 

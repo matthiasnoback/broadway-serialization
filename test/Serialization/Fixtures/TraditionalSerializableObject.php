@@ -3,7 +3,6 @@
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
 use Broadway\Serializer\Serializable;
-use Broadway\Serializer\SerializableInterface;
 
 class TraditionalSerializableObject implements Serializable
 {
@@ -24,7 +23,7 @@ class TraditionalSerializableObject implements Serializable
         return new self($data['bar']);
     }
 
-    public function serialize()
+    public function serialize(): array
     {
         return ['bar' => $this->bar];
     }

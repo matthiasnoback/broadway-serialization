@@ -12,7 +12,7 @@ use BroadwaySerialization\Reconstitution\Reconstitution;
 trait AutoSerializable
 {
     /**
-     * @see \Broadway\Serializer\SerializableInterface::deserialize()
+     * @see \Broadway\Serializer\Serializable::deserialize()
      *
      * @param array $data
      * @return object of type static::class
@@ -26,11 +26,11 @@ trait AutoSerializable
     }
 
     /**
-     * @see \Broadway\Serializer\SerializableInterface::serialize()
+     * @see \Broadway\Serializer\Serializable::serialize()
      *
      * @return array Values of properties that should be serialized
      */
-    final public function serialize()
+    final public function serialize(): array
     {
         return RecursiveSerializer::serialize(get_object_vars($this));
     }

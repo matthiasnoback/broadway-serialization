@@ -3,7 +3,6 @@
 namespace BroadwaySerialization\Test\Performance;
 
 use Broadway\Serializer\Serializable;
-use Broadway\Serializer\SerializableInterface;
 
 class TraditionalSerializableClass implements Serializable
 {
@@ -42,7 +41,7 @@ class TraditionalSerializableClass implements Serializable
         return $object;
     }
 
-    public function serialize()
+    public function serialize(): array
     {
         return [
             'stringProperty' => $this->stringProperty,

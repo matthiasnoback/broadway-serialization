@@ -2,10 +2,10 @@
 
 namespace BroadwaySerialization\Test\Performance;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable;
 use BroadwaySerialization\Serialization\AutoSerializable;
 
-class SerializableClassUsingTrait implements SerializableInterface
+class SerializableClassUsingTrait implements Serializable
 {
     use AutoSerializable;
 

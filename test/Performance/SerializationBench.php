@@ -1,6 +1,6 @@
 <?php namespace BroadwaySerialization\Test\Performance;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable;
 use BroadwaySerialization\Hydration\HydrateUsingReflection;
 use BroadwaySerialization\Hydration\HydrateUsingReflectionFaster;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
@@ -10,12 +10,12 @@ use Doctrine\Instantiator\Instantiator;
 class BenchSerialization
 {
     /**
-     * @var SerializableInterface
+     * @var Serializable
      */
     private $traditionalSerializableClass;
 
     /**
-     * @var SerializableInterface
+     * @var Serializable
      */
     private $serializableClassUsingTrait;
 
