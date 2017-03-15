@@ -1,10 +1,11 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Performance;
 
 use Broadway\Serializer\Serializable;
 
-class SomeOtherSerializableClass implements Serializable
+final class SomeOtherSerializableClass implements Serializable
 {
     private $foo;
 

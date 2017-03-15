@@ -1,11 +1,12 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Performance;
 
 use Broadway\Serializer\Serializable;
 use BroadwaySerialization\Serialization\AutoSerializable;
 
-class SomeOtherSerializableClassUsingTrait implements Serializable
+final class SomeOtherSerializableClassUsingTrait implements Serializable
 {
     use AutoSerializable;
 

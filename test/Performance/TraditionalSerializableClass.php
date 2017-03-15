@@ -1,10 +1,11 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Performance;
 
 use Broadway\Serializer\Serializable;
 
-class TraditionalSerializableClass implements Serializable
+final class TraditionalSerializableClass implements Serializable
 {
     private $stringProperty = 'foo';
     private $integerProperty = 20;

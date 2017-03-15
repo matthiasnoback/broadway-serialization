@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Serialization;
 
@@ -17,7 +18,7 @@ final class RecursiveSerializer
      * @param array $values
      * @return array
      */
-    public static function serialize(array $values)
+    public static function serialize(array $values): array
     {
         $serializedData = [];
 
@@ -44,7 +45,7 @@ final class RecursiveSerializer
      * @param array $callbacks
      * @return array
      */
-    public static function deserialize(array $values, array $callbacks = [])
+    public static function deserialize(array $values, array $callbacks = []): array
     {
         $deserializedData = [];
         foreach ($values as $property => $value) {

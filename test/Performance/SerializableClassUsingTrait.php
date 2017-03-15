@@ -1,11 +1,12 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Performance;
 
 use Broadway\Serializer\Serializable;
 use BroadwaySerialization\Serialization\AutoSerializable;
 
-class SerializableClassUsingTrait implements Serializable
+final class SerializableClassUsingTrait implements Serializable
 {
     use AutoSerializable;
 
@@ -25,7 +26,7 @@ class SerializableClassUsingTrait implements Serializable
         ];
     }
 
-    protected static function deserializationCallbacks()
+    protected static function deserializationCallbacks(): array
     {
         return [
             'objectProperty' => [

@@ -1,12 +1,14 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Hydrate;
 
 use BroadwaySerialization\Hydration\HydrateUsingReflection;
 use BroadwaySerialization\Test\Hydrate\Fixtures\ClassWithoutProperties;
 use BroadwaySerialization\Test\Hydrate\Fixtures\ClassWithPrivateProperties;
+use PHPUnit\Framework\TestCase;
 
-class HydrateUsingReflectionTest extends \PHPUnit_Framework_TestCase
+final class HydrateUsingReflectionTest extends TestCase
 {
     /**
      * @test
@@ -62,5 +64,7 @@ class HydrateUsingReflectionTest extends \PHPUnit_Framework_TestCase
 
         // This class doesn't have any property which should be no problem
         $hydrate->hydrate([], $object);
+
+        $this->assertTrue(true); // to prevent a strict warning
     }
 }

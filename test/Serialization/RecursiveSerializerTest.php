@@ -1,11 +1,13 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Serialization;
 
 use BroadwaySerialization\Serialization\RecursiveSerializer;
 use BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject;
+use PHPUnit\Framework\TestCase;
 
-class RecursiveSerializerTest extends \PHPUnit_Framework_TestCase
+final class RecursiveSerializerTest extends TestCase
 {
     /**
      * @test

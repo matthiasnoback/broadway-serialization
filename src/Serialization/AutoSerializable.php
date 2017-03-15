@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Serialization;
 
@@ -30,7 +31,7 @@ trait AutoSerializable
      *
      * @return array Values of properties that should be serialized
      */
-    final public function serialize()
+    final public function serialize(): array
     {
         return RecursiveSerializer::serialize(get_object_vars($this));
     }
@@ -46,7 +47,7 @@ trait AutoSerializable
      *
      * @return array
      */
-    protected static function deserializationCallbacks()
+    protected static function deserializationCallbacks(): array
     {
         return [];
     }

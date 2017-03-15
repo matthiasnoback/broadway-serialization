@@ -1,12 +1,15 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Reconstitution;
 
 use BroadwaySerialization\Hydration\HydrateUsingReflection;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject;
 use Doctrine\Instantiator\Instantiator;
+use PHPUnit\Framework\TestCase;
 
-class InstantiateAndHydrateTest extends \PHPUnit_Framework_TestCase
+final class InstantiateAndHydrateTest extends TestCase
 {
     /**
      * @test
@@ -15,7 +18,7 @@ class InstantiateAndHydrateTest extends \PHPUnit_Framework_TestCase
     {
         $reconstitute = new ReconstituteUsingInstantiatorAndHydrator(new Instantiator(), new HydrateUsingReflection());
 
-        $className = 'BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject';
+        $className = TraditionalSerializableObject::class;
         $data = ['bar' => 'baz'];
         $object = $reconstitute->objectFrom($className, $data);
 

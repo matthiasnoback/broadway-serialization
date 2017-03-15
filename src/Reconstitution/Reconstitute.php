@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Reconstitution;
 
@@ -12,5 +13,5 @@ interface Reconstitute
      * @param array $data
      * @return object of type $className
      */
-    public function objectFrom($className, array $data);
+    public function objectFrom(string $className, array $data);
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Reconstitution;
 
@@ -16,7 +17,7 @@ final class Reconstitution
      * @return Reconstitute
      * @throws \LogicException When reconstituteUsing() wasn't called first
      */
-    public static function reconstitute()
+    public static function reconstitute(): Reconstitute
     {
         if (!self::$reconstitute instanceof Reconstitute) {
             throw new \LogicException(

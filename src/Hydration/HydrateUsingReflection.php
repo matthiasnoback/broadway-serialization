@@ -1,11 +1,12 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Hydration;
 
 /**
  * Simple implementation of a hydrator, which uses reflection to iterate over the properties of an object
  */
-class HydrateUsingReflection implements Hydrate
+final class HydrateUsingReflection implements Hydrate
 {
     /**
      * @var array An array of arrays of \ReflectionProperty instances
@@ -25,12 +26,12 @@ class HydrateUsingReflection implements Hydrate
             $property->setValue($object, $data[$name]);
         }
     }
-    
+
     /**
      * @param object $object
      * @return \ReflectionProperty[]
      */
-    private function propertiesOf($object)
+    private function propertiesOf($object): array
     {
         $className = get_class($object);
 

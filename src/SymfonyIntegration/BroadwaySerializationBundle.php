@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\SymfonyIntegration;
 
@@ -6,9 +7,9 @@ use BroadwaySerialization\Reconstitution\Reconstitution;
 use BroadwaySerialization\SymfonyIntegration\DependencyInjection\BroadwaySerializationExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class BroadwaySerializationBundle extends Bundle
+final class BroadwaySerializationBundle extends Bundle
 {
-    public function getContainerExtension()
+    public function getContainerExtension(): BroadwaySerializationExtension
     {
         return new BroadwaySerializationExtension();
     }

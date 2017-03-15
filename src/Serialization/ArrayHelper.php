@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Serialization;
 
@@ -10,7 +11,7 @@ final class ArrayHelper
      * @param array $values
      * @return bool
      */
-    public static function isNumericallyIndexed(array $values)
+    public static function isNumericallyIndexed(array $values): bool
     {
         if (empty($values)) {
             return true;

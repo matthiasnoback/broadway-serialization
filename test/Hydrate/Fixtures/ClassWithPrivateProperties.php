@@ -1,8 +1,9 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Hydrate\Fixtures;
 
-class ClassWithPrivateProperties
+final class ClassWithPrivateProperties
 {
     private $foo;
 

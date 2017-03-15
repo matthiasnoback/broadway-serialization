@@ -1,13 +1,19 @@
-<?php namespace BroadwaySerialization\Test\Performance;
+<?php
+declare(strict_types = 1);
+
+namespace BroadwaySerialization\Test\Performance;
 
 use Broadway\Serializer\Serializable;
 use BroadwaySerialization\Hydration\HydrateUsingReflection;
-use BroadwaySerialization\Hydration\HydrateUsingReflectionFaster;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use Doctrine\Instantiator\Instantiator;
+use PhpBench\Benchmark\Metadata\Annotations\BeforeMethods;
+use PhpBench\Benchmark\Metadata\Annotations\Groups;
+use PhpBench\Benchmark\Metadata\Annotations\Revs;
+use PhpBench\Benchmark\Metadata\Annotations\Warmup;
 
-class BenchSerialization
+final class BenchSerialization
 {
     /**
      * @var Serializable

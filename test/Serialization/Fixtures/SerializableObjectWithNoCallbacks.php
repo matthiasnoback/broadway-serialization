@@ -1,11 +1,12 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
 use Broadway\Serializer\Serializable;
 use BroadwaySerialization\Serialization\AutoSerializable;
 
-class SerializableObjectWithNoCallbacks implements Serializable
+final class SerializableObjectWithNoCallbacks implements Serializable
 {
     use AutoSerializable;
 

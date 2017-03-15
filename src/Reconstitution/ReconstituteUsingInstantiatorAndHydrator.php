@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Reconstitution;
 
@@ -8,7 +9,7 @@ use Doctrine\Instantiator\InstantiatorInterface;
 /**
  * Uses doctrine/instantiator and a Hydrate instance to reconstitute objects
  */
-class ReconstituteUsingInstantiatorAndHydrator implements Reconstitute
+final class ReconstituteUsingInstantiatorAndHydrator implements Reconstitute
 {
     /**
      * @var InstantiatorInterface
@@ -33,7 +34,7 @@ class ReconstituteUsingInstantiatorAndHydrator implements Reconstitute
     /**
      * @inheritdoc
      */
-    public function objectFrom($className, array $data)
+    public function objectFrom(string $className, array $data)
     {
         $object = $this->instantiator->instantiate($className);
 

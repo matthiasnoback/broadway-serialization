@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Serialization;
 
@@ -9,8 +10,9 @@ use BroadwaySerialization\Test\Serialization\Fixtures\SerializableObjectUsingTra
 use BroadwaySerialization\Test\Serialization\Fixtures\SerializableObjectWithNoCallbacks;
 use BroadwaySerialization\Test\Serialization\Fixtures\TraditionalSerializableObject;
 use Doctrine\Instantiator\Instantiator;
+use PHPUnit\Framework\TestCase;
 
-class SerializableTest extends \PHPUnit_Framework_TestCase
+final class SerializableTest extends TestCase
 {
     protected function setUp()
     {

@@ -1,10 +1,12 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Serialization;
 
 use BroadwaySerialization\Serialization\ArrayHelper;
+use PHPUnit\Framework\TestCase;
 
-class ArrayHelperTest extends \PHPUnit_Framework_TestCase
+final class ArrayHelperTest extends TestCase
 {
     /**
      * @test

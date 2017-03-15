@@ -1,15 +1,16 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\SymfonyIntegration;
 
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class BroadwaySerializationBundleTest extends KernelTestCase
+final class BroadwaySerializationBundleTest extends KernelTestCase
 {
     protected static function getKernelClass()
     {
-        return 'BroadwaySerialization\Test\SymfonyIntegration\TestKernel';
+        return TestKernel::class;
     }
 
     /**

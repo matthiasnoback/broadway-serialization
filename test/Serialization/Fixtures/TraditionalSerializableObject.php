@@ -1,10 +1,11 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Serialization\Fixtures;
 
 use Broadway\Serializer\Serializable;
 
-class TraditionalSerializableObject implements Serializable
+final class TraditionalSerializableObject implements Serializable
 {
     private $bar;
 

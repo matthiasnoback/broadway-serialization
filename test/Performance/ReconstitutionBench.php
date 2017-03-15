@@ -1,12 +1,18 @@
-<?php namespace BroadwaySerialization\Test\Performance;
+<?php
+declare(strict_types = 1);
+
+namespace BroadwaySerialization\Test\Performance;
 
 use BroadwaySerialization\Hydration\HydrateUsingReflection;
-use BroadwaySerialization\Hydration\HydrateUsingReflectionFaster;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use Doctrine\Instantiator\Instantiator;
+use PhpBench\Benchmark\Metadata\Annotations\BeforeMethods;
+use PhpBench\Benchmark\Metadata\Annotations\Groups;
+use PhpBench\Benchmark\Metadata\Annotations\Revs;
+use PhpBench\Benchmark\Metadata\Annotations\Warmup;
 
-class ReconstitutionBench
+final class ReconstitutionBench
 {
     private $deserializationData = [
         'stringProperty' => 'foo',

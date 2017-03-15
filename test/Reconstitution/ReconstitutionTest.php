@@ -1,17 +1,20 @@
 <?php
+declare(strict_types = 1);
 
 namespace BroadwaySerialization\Test\Reconstitution;
 
+use BroadwaySerialization\Reconstitution\Reconstitute;
 use BroadwaySerialization\Reconstitution\Reconstitution;
+use PHPUnit\Framework\TestCase;
 
-class ReconstitutionTest extends \PHPUnit_Framework_TestCase
+final class ReconstitutionTest extends TestCase
 {
     /**
      * @test
      */
     public function it_gives_a_nice_warning_if_no_reconstitute_object_was_provided()
     {
-        $this->setExpectedException('\LogicException');
+        $this->expectException(\LogicException::class);
 
         Reconstitution::reconstitute();
     }
@@ -29,6 +32,6 @@ class ReconstitutionTest extends \PHPUnit_Framework_TestCase
 
     private function dummyReconstitute()
     {
-        return $this->getMock('BroadwaySerialization\Reconstitution\Reconstitute');
+        return $this->createMock(Reconstitute::class);
     }
 }
