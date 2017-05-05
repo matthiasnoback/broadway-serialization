@@ -6,6 +6,7 @@ namespace BroadwaySerialization\Test\Reconstitution;
 use BroadwaySerialization\Reconstitution\Reconstitute;
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use PHPUnit\Framework\TestCase;
+use LogicException;
 
 final class ReconstitutionTest extends TestCase
 {
@@ -14,7 +15,7 @@ final class ReconstitutionTest extends TestCase
      */
     public function it_gives_a_nice_warning_if_no_reconstitute_object_was_provided()
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(LogicException::class);
 
         Reconstitution::reconstitute();
     }

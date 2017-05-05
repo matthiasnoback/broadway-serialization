@@ -10,9 +10,14 @@ before_script:
 
 script:
   - vendor/bin/phpunit
-  - vendor/bin/phpbench
+  - vendor/bin/phpbench run --report=default
+
 
 after_script:
   - vendor/bin/coveralls
 
 sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
