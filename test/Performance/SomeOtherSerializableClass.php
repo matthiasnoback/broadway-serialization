@@ -14,7 +14,7 @@ final class SomeOtherSerializableClass implements Serializable
         return new self($data['foo']);
     }
 
-    public function serialize()
+    public function serialize(): array
     {
         return [
             'foo' => $this->foo
