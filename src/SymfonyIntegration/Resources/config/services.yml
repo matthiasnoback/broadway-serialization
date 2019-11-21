@@ -9,6 +9,7 @@ services:
 
     broadway_serialization.reconstitute:
         class: BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator
+        public: true
         arguments:
             - "@broadway_serialization.instantiator"
             - "@broadway_serialization.hydrate"
