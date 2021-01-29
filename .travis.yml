@@ -2,10 +2,10 @@ language: php
 
 jobs:
   include:
-    - php: 7.0
-      env: BROADWAY=^1.0
-    - php: 7.3
+    - php: 7.4
       env: BROADWAY=^2.1
+    - php: 8.0
+      env: BROADWAY=^2.4
 
 before_script:
   - composer selfupdate
