@@ -92,11 +92,6 @@ Reconstitution::reconstituteUsing(
 
 Note that this package ships with different implementations of the hydrator. Depending on your setup and preferences, you can also use the `HydrateUsingClosure` class. The former generally performs better than the `HydrateUsingReflection`.
 
-### Symfony
-
-If you're using Symfony, this can be managed for you automatically. Just register the 
-`BroadwaySerialization\SymfonyIntegration\BroadwaySerializationBundle` in your application kernel.
-
 ## Performance
 
 When using this library, your personal performance will increase significantly. Of course, runtime performance will 
