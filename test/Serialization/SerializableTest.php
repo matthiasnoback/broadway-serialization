@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SerializableTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         Reconstitution::reconstituteUsing(
             new ReconstituteUsingInstantiatorAndHydrator(new Instantiator(), new HydrateUsingReflection())
