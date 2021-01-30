@@ -2,8 +2,6 @@
 
 By Matthias Noback
 
-[![Build Status](https://travis-ci.org/matthiasnoback/broadway-serialization.svg?branch=master)](https://travis-ci.org/matthiasnoback/broadway-serialization) [![Coverage Status](https://coveralls.io/repos/matthiasnoback/broadway-serialization/badge.svg?branch=master)](https://coveralls.io/r/matthiasnoback/broadway-serialization?branch=master)
-
 Event-sourcing framework [Broadway](https://github.com/broadway/broadway)
 requires a lot of your objects (like domain events and often view models as 
 well) to be serializable because they have to be stored in plain text and later 
