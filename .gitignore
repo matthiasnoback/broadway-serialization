@@ -3,3 +3,4 @@
 /composer.lock
 /build/
 /test/SymfonyIntegration/cache/
+/.phpunit.result.cache
